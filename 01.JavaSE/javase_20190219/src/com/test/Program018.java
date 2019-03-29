@@ -1,0 +1,53 @@
+/*
+ * 프로그램명: 연산자
+ * 작성자 : 이민종
+ * 작성일 : 20190219
+*/
+
+package com.test;
+
+public class Program018 {
+
+	public static void main(String[] args) {
+
+		// 연산자
+		// 메모리에 저장된 자료에 대한 계산 과정에 필요한 기호
+		// 1. Arithmetic Operators
+		// 2. Relational Operators
+		// 3. Bitwise Operators
+		// 4. Logical Operators
+		// 5. Assignment Operators
+		// 6. Misc Operators
+
+		// Relational Operators
+		// 비교 연산 수행에 필요한 연산자
+		// ==, !=, >, <, >=, <=
+		// 비교 연산의 결과값은 true 또는 false
+
+		// 변수 선언
+		int a, b;
+		boolean c, d, e, f, g, h;
+
+		// 변수 a에 10 할당, 변수 b에 20 할당
+		a = 10;
+		b = 20;
+
+		c = a == b;
+		d = a != b;
+		e = a > b;
+		f = a >= b;
+		g = a < b;
+		h = a <= b;
+
+		// 연산의 결과값을 예상해본다.
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+		System.out.println(f);
+		System.out.println(g);
+		System.out.println(h);
+
+	}
+
+}
