@@ -68,3 +68,16 @@ public void menu1(Scanner sc) {
 		System.out.println("-----------------------------------");
 	}	
 ```
+```java
+package string; 
+
+public class concat {
+
+	public static void main(String[] args) {
+		String str1 = "java";
+		String str2 = "happy";
+		System.out.println(str1.concat(str2));  //javahappy
+	}
+}
+//javahappy
+```
