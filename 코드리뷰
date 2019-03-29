@@ -25,7 +25,7 @@ JavaSE, Generic, Collection, oop
 5. 코드 
 ```java
 // 메인메뉴 주문
-	public void menu1(Scanner sc) {
+public void menu1(Scanner sc) {
 		List<Item> item = new ArrayList<Item>();
 		Item temp = this.sandwitch(sc);
 		if (temp == null)
@@ -66,5 +66,5 @@ JavaSE, Generic, Collection, oop
 			System.out.printf("%d %s%n", a + 1, carts.get(a));
 		}
 		System.out.println("-----------------------------------");
-	}
+	}	
 ```
