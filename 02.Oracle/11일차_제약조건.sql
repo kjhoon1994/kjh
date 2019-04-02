@@ -163,7 +163,7 @@ SELECT uc.owner, uc.constraint_name, uc.table_name, uc.constraint_type, ucc.colu
 CREATE TABLE test3 (
 	col1 NUMBER(3)
 	,col2 VARCHAR2(10)
-	,CONSTRAINT TEST3_COL1_COL2_PK PRIMARY KEY(col1, col2)
+	,CONSTRAINT TEST3_COL1_COL2_PK PRIMARY KEY(col1, col2) -- 하나는 똑같아도 되지만, 둘다 동시에 같으면 안된다.
 );
 
 INSERT INTO test3 (col1, col2) 
@@ -182,6 +182,7 @@ INSERT INTO test3 (col1, col2)
 	VALUES (2, 'ABCD'); --col1, col2 모두 같은 데이터. ORA-00001
 
 COMMIT;
+SELECT * FROM test3;
 
 
 ----------------------------------
@@ -204,7 +205,7 @@ INSERT INTO test4 (col1, col2)
 INSERT INTO test4 (col1, col2) 
 	VALUES (3, NULL);
 INSERT INTO test4 (col1, col2) 
-	VALUES (2, 'ABCD');  --ORA-00001
+	VALUES (2, 'ABCD');  --ORA-00001 중복
 INSERT INTO test4 (col1, col2) 
 	VALUES (NULL, NULL); --ORA-01400
 COMMIT;
@@ -254,7 +255,7 @@ ALTER TABLE 테이블명
 	DROP CONSTRAINT (참조)제약명;
 --> 잘못 지정된 제약을 수정하려면 삭제 후 추가해야 한다.
 */
-
+-- 테이블 생성 -> primary key 생성 -> foreign key 생성 -- 테이블 생성할때 제약조건을 하지 않는것을 더 권장한다. 따로 떨어뜨려서
 CREATE TABLE jobs (
 	jikwi_id NUMBER
 	,jikwi_name VARCHAR2(10)
@@ -263,7 +264,6 @@ CREATE TABLE jobs (
 ALTER TABLE jobs
 	 ADD CONSTRAINT JOBS_JIKWI_ID_PK PRIMARY KEY(jikwi_id);
   
-
 INSERT INTO jobs (jikwi_id, jikwi_name)
   VALUES (1, 'CLERK');
 INSERT INTO jobs (jikwi_id, jikwi_name)
@@ -275,7 +275,7 @@ INSERT INTO jobs (jikwi_id, jikwi_name)
 INSERT INTO jobs (jikwi_id, jikwi_name)
   VALUES (4, 'VICE PRES'); --O
 COMMIT;
-
+SELECT * FROM jobs;
 
 CREATE TABLE employees (
 	sid NUMBER
@@ -301,6 +301,8 @@ INSERT INTO employees (sid, name, jikwi_id)
 INSERT INTO employees (sid, name, jikwi_id)
   VALUES (4, 'hwang', 5); --FK 허용 범위 초과. X
 COMMIT;
+
+SELECT * FROM employees;
 
 SELECT sid, name, e.jikwi_id, jikwi_name
   FROM employees e, jobs j
@@ -525,8 +527,10 @@ CREATE TABLE jobs (
 INSERT INTO jobs (jikwi_id, jikwi_name) VALUES (1, '과장');
 INSERT INTO jobs (jikwi_id, jikwi_name) VALUES (2, '대리');
 INSERT INTO jobs (jikwi_id, jikwi_name) VALUES (3, '사원');
+INSERT INTO jobs (jikwi_id, jikwi_name) VALUES (4, '임원');
 COMMIT;
 
+SELECT * FROM jobs;
 
 --FK 제약 지정
 CREATE TABLE employees (
@@ -672,9 +676,9 @@ CREATE TABLE account_ (
 );
 
 --AccountOwner 테이블
-
+CREATE TABLE AccountOwner();
 --AccountHistory 테이블
-
+CREATE TABLE AccountHistory();
 
 --샘플 데이터 입력 쿼리
 
