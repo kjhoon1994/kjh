@@ -1,0 +1,1 @@
+@C:\Users\SIST\git\kjh\02.Oracle\insa_emp_customizing_original.sql

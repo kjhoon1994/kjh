@@ -471,12 +471,12 @@ SELECT empId, name_, ssn, hiredate, phone, reg_name, dept_name, job_title, e.bas
 /*
 문제19)  employees, regions, departments, jobs 테이블을 가지고, 원시 데이터 모습으로 출력할 수 있는 JOIN 쿼리 작성 및 뷰 작성 (empView).
 */
-CREATE OR REPLACE VIEW empView
+/*CREATE OR REPLACE VIEW empView
 AS SELECT empId, name_, ssn, hiredate, phone, reg_name, dept_name, job_title, e.basicpay, e.extrapay,(e.basicpay +e.extrapay) pay
     FROM employees e INNER JOIN regions r ON e.regid = r.regid
     INNER JOIN departments d ON e.deptid = d.deptid
     INNER JOIN jobs j ON e.jobid = j.jobid
-    ORDER BY empId;
+    ORDER BY empId;*/
 
 
 
