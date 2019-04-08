@@ -10,3 +10,6 @@ INSERT INTO Employees(id_, age, first_, last_) VALUES (101, 25, 'Mahnaz', 'Fatma
 INSERT INTO Employees(id_, age, first_, last_) VALUES (102, 30, 'Zaid', 'Khan');
 INSERT INTO Employees(id_, age, first_, last_) VALUES (103, 28, 'Sumit', 'Mittal');
 COMMIT;
+
+SELECT id_, age, first_, last_
+    FROM employees;
