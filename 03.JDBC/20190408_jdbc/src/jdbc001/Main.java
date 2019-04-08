@@ -26,22 +26,34 @@ public class Main {
 		Clean up the environment: Requires explicitly closing all database resources versus relying on the JVM's garbage collection.
 	*/	
 	
-
+		Connection conn = null;
+		Statement stmt = null;
 		
 	try{	
 		// 2 단계 : Register JDBC driver
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 		// 3 단계 : 
-		DriverManager.getConnection("jdbc:oracle:thin:@211.238.142.52:1521:xe", "rlawogns", "1111");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@211.238.142.52:1521:xe", "rlawogns", "1111");
 		
 		System.out.println("오라클 연결 테스트 성공!");
 	} catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-	}
-	
-	
+	} finally {
+		// 6 단계 : Clean-up environment
+		try{
+	         if(stmt!=null)
+	            stmt.close();
+	      } catch(SQLException se2){
+	      }
 		
+		try{
+	         if(conn!=null)
+	            conn.close();
+	      } catch(SQLException se){
+	         se.printStackTrace();
+	      }
+	}	
 		
 	}
 
