@@ -1,4 +1,4 @@
-package jdbc002;
+package jdbc004;
 //1 단계 : Import required packages	
 import java.sql.*;
 
@@ -37,27 +37,19 @@ public class Main {
 		conn = DriverManager.getConnection("jdbc:oracle:thin:@211.238.142.52:1521:xe", "rlawogns", "1111");
 		
 		// 4 단계 : 쿼리 준비 및 실행
-		// \r\n : 콘솔에서의 줄바꿈 처리
-		// 주의) 쿼리 끝 부분에 ';' 문자 없다 + 는  첫 번째 문장과  두 번째 문장을 서로 연결시켜준다.
-		String sql = "SELECT id_, age, first_, last_\r\n" + 
-				"    FROM employees";
+		// 주의) 쿼리 끝 부분에 ';' 문자 없다 
+		// 주의) COMMIT 명령이 자동 실행됨
+		String sq = "INSERT 쿼리";
 		stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(sql);
 		
-		// 5 단계 : 쿼리 실행 결과 분석 및 출력 -> 반복문 활용 
+		String sql = "INSERT INTO employees(id_, age, first_, last_)\r\n" + 
+				" VALUES (104,29, 'Hong','gildong')";
+		stmt = conn.createStatement();
+		// 5 단계 : 쿼리 실행 결과 분석 및 출력
+		int result = stmt.executeUpdate(sql);
+		System.out.printf("%d개의 행이 삽입되었습니다.", result);
 		
-		while(rs.next()) { // 첫번째 row 부터 실행 // 마지막 row에서 실행시 false 반환
-		int id_ = rs.getInt("id_"); 
-		int age = rs.getInt("age");
-		String first_ = rs.getString("first_");
-		String last_ = rs.getString("last_");
-	
-		System.out.printf("%d / %d / %s / %s%n", id_, age, first_, last_);
-		
-		}
-		// 6 단계 : Clean-up environment
-		rs.close();
-		
+
 	} catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 	} finally {

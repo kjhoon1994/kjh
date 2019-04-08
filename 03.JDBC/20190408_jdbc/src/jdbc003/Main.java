@@ -1,4 +1,4 @@
-package jdbc002;
+package jdbc003;
 //1 단계 : Import required packages	
 import java.sql.*;
 
@@ -44,15 +44,15 @@ public class Main {
 		stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		
-		// 5 단계 : 쿼리 실행 결과 분석 및 출력 -> 반복문 활용 
+		// 5 단계 : 쿼리 실행 결과 분석 및 출력
 		
-		while(rs.next()) { // 첫번째 row 부터 실행 // 마지막 row에서 실행시 false 반환
+		if(rs.next()) { // 첫번째 row 부터 실행 // 마지막 row에서 실행시 false 반환
 		int id_ = rs.getInt("id_"); 
 		int age = rs.getInt("age");
 		String first_ = rs.getString("first_");
 		String last_ = rs.getString("last_");
 	
-		System.out.printf("%d / %d / %s / %s%n", id_, age, first_, last_);
+		System.out.printf("%d / %d / %s / %s%n",id_, age, first_, last_);
 		
 		}
 		// 6 단계 : Clean-up environment
