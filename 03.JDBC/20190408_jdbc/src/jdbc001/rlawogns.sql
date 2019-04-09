@@ -19,3 +19,32 @@ COMMIT;
 
 SELECT id_, age, first_, last_
     FROM employees;
+    
+CREATE TABLE members(
+    mid VARCHAR(4) -- PK.  M001, M002, ...
+    , name_ NVARCHAR2(20)
+    , phone VARCHAR2(20)
+    , email VARCHAR2(50)
+);
+
+ALTER TABLE members
+ADD CONSTRAINT members_mid_PK PRIMARY KEY(mid);
+INSERT INTO members(mid, name_, phone, email) VALUES ('M001', 'kim', '010-5067-7822','kjh@naver,com');
+INSERT INTO members(mid, name_, phone, email) VALUES ('M002', 'eric', '010-4564-1232','eric@naver,com');
+INSERT INTO members(mid, name_, phone, email) VALUES ('M003', 'sam', '010-1111-3422','sam@naver,com');
+
+-- 전체 출력
+SELECT mid, name_, phone, email
+    FROM members
+    ORDER BY mid;
+    
+-- 검색 출력
+SELECT mid, name_, phone, email
+    FROM members
+    WHERE INSTR(LOWER(name_), LOWER('SAM')) > 0
+    ORDER BY mid;
+    
+    
+    
+    
+    
