@@ -35,7 +35,7 @@ public class AccountOwner {
 		}
 		@Override
 		public String toString() {
-			return String.format("%s / %s / %s ", accountOwnerId, accountOwnerName, accountOwnerPhone);
+			return String.format("%s / %s / %s%n ", accountOwnerId, accountOwnerName, accountOwnerPhone);
 		}
 		
 		

@@ -76,7 +76,7 @@ public class Account {
 
 		@Override
 		public String toString() {
-			return String.format("%s / %s / %d / %s / %s / %s  ", accountId, accountOwnerId, balance, accountCreateDate, pw, lastUpdateDate);
+			return String.format("%s / %s / %d / %s / %s / %s%n  ", accountId, accountOwnerId, balance, accountCreateDate, pw, lastUpdateDate);
 		}
 		
 		

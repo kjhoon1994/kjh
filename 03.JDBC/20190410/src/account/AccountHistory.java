@@ -20,6 +20,12 @@ public class AccountHistory {
 			this.gubun = gubun;
 			this.balance = balance;
 		}
+		public AccountHistory(String accountId, int money, int balance) {
+			super();
+			this.accountId = accountId;
+			this.money = money;
+			this.balance = balance;
+		}
 		public String getAccountId() {
 			return accountId;
 		}
@@ -52,7 +58,7 @@ public class AccountHistory {
 		}
 		@Override
 		public String toString() {
-			return String.format("%s / %d / %s / %s / %d ", accountId, money , inoutdate, gubun, balance);
+			return String.format("%s / %d / %s / %s / %d%n ", accountId, money , inoutdate, gubun, balance);
 		}
 		
 		

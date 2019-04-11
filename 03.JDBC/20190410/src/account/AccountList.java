@@ -24,6 +24,10 @@ public class AccountList {
 		this.accountOwnerName = accountOwnerName;
 		this.accountOwnerPhone = accountOwnerPhone;
 	}
+	public AccountList(String accountOwnerName, String accountOwnerPhone) {
+		this.accountOwnerName = accountOwnerName;
+		this.accountOwnerPhone = accountOwnerPhone;
+	}
 	public String getAccountId() {
 		return accountId;
 	}
@@ -62,7 +66,7 @@ public class AccountList {
 	}
 	@Override
 	public String toString() {
-		return String.format("%s / %d / %s / %s / %s / %s ", accountId, balance, accountCreateDate, lastUpdateDate,
+		return String.format("%s / %d / %s / %s / %s / %s%n ", accountId, balance, accountCreateDate, lastUpdateDate,
 				accountOwnerName, accountOwnerPhone);
 	}
 	

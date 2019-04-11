@@ -18,6 +18,9 @@ public class Main {
 			case 1 : as.menu01(sc); break;
 			case 2 : as.menu02(sc); break;
 			case 3 : as.menu03(sc); break;
+			
+			// 관리자 전용 메뉴
+			case 99: as.adminCheck(sc); break;
 			}
 		}
 		sc.close();
