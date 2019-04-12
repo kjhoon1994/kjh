@@ -9,6 +9,11 @@ public class AccountOwner {
 			super();
 			// TODO Auto-generated constructor stub
 		}
+		public AccountOwner(String accountOwnerId)
+		{
+			super();
+			this.accountOwnerId = accountOwnerId;
+		}		
 		public AccountOwner(String accountOwnerId, String accountOwnerName, String accountOwnerPhone) {
 			super();
 			this.accountOwnerId = accountOwnerId;
@@ -37,8 +42,6 @@ public class AccountOwner {
 		public String toString() {
 			return String.format("%s / %s / %s%n ", accountOwnerId, accountOwnerName, accountOwnerPhone);
 		}
-		
-		
-		
+
 		
 }

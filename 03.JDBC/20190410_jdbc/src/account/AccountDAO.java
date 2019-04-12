@@ -24,27 +24,27 @@ public class AccountDAO {
 
 			conn = OracleConnection.connect();
 
-			String sql = "SELECT accountId, balance, TO_CHAR(accountCreateDate,'YYYY-MM-DD') accountCreateDate, To_CHAR(lastUpdateDate,'YYYY-MM-DD') lastUpdateDate, accountOwnerName, accountOwnerPhone\r\n"
-					+ "    FROM account_ a , accountowner_ ao\r\n"
-					+ "    WHERE a.accountownerid = ao.accountownerid\r\n";
+			String sql = "SELECT a.accountId,a.accountOwnerId,a.balance, a.accountCreateDate,a.pw,a.lastUpdateDate,ao.accountOwnerId\r\n" + 
+					"    FROM account_ a , accountOwner_ ao\r\n" + 
+					"    WHERE a.accountOwnerId= ao.accountOwnerId";
 
 			// 계좌번호 기준, 이름/전화번호 기준
 			if (key.equals("accountId")) {
-				sql += "AND a.accountId = ? ";
-			} else if (key.equals("name/phone")) {
-				sql += "AND accountOwnerName = ? AND accountOwnerPhone = ?";
-			}
-			sql += "ORDER BY accountId";
+				sql += " AND a.accountId = ? ";
+			} else if (key.equals("namephone")) {
+				sql += " AND accountOwnerName = ? AND accountOwnerPhone = ? ";
+			} 
+			
+			sql += " ORDER BY accountId";
 			stmt = conn.prepareStatement(sql);
 
 			if (key.equals("accountId")) {
 				stmt.setString(1, value.get("accountId"));
 			}
-			if (key.equals("name/phone")) {
+			if (key.equals("namephone")) {
 				stmt.setString(1, value.get("name"));
 				stmt.setString(2, value.get("phone"));
 			}
-
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -54,9 +54,10 @@ public class AccountDAO {
 				String lastUpdateDate = rs.getString("lastUpdateDate");
 				String accountOwnerName = rs.getString("accountOwnerName");
 				String accountOwnerPhone = rs.getString("accountOwnerPhone");
+				String accountOwnerId = rs.getString("accountOwnerId");
 
 				result.add(new AccountList(accountId, balance, accountCreateDate, lastUpdateDate, accountOwnerName,
-						accountOwnerPhone));
+						accountOwnerPhone,accountOwnerId));
 			}
 			rs.close();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -331,8 +332,8 @@ public class AccountDAO {
 		}
 		return result;
 	}
-	
-	// 신규 사용자 번호 자동 생성 메소드 
+
+	// 신규 사용자 번호 자동 생성 메소드
 	public String newAccountOwnerId() {
 		String result = "A000";
 
@@ -341,16 +342,16 @@ public class AccountDAO {
 		try {
 
 			conn = OracleConnection.connect();
-			String sql2 = "SELECT CONCAT('A',TRIM(TO_CHAR(SUBSTR(MAX(accountOwnerId),2)+1,'000'))) newAccountOwnerId\r\n" + 
-					"    FROM AccountOwner_     ";
+			String sql2 = "SELECT CONCAT('A',TRIM(TO_CHAR(SUBSTR(MAX(accountOwnerId),2)+1,'000'))) newAccountOwnerId\r\n"
+					+ "    FROM AccountOwner_     ";
 			stmt = conn.prepareStatement(sql2);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				result= rs.getString("newAccountOwnerId");
+			if (rs.next()) {
+				result = rs.getString("newAccountOwnerId");
 			}
 			rs.close();
 		}
-		
+
 		catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -367,4 +368,75 @@ public class AccountDAO {
 		}
 		return result;
 	}
+
+	public boolean newAccount(AccountOwner ao, Account a) {
+		boolean result = false;
+	
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try {
+			conn = OracleConnection.connect();
+			
+			// 트랜잭션 처리
+			conn.setAutoCommit(false);
+			if (ao != null) {
+				// 계좌주 정보 생성
+				String sql = "INSERT INTO AccountOwner_(accountOwnerId, accountOwnerName, accountOwnerPhone)\r\n"+
+				"VALUES (?,?,?)";
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(1, ao.getAccountOwnerId());
+				stmt.setString(2, ao.getAccountOwnerName());
+				stmt.setString(3, ao.getAccountOwnerPhone());
+				
+				stmt.executeUpdate();
+				stmt.close();
+				
+			}
+			String sql2 = " INSERT INTO Account_(accountId,accountOwnerId ,balance ,accountCreateDate ,pw ,lastUpdateDate) " +
+					"VALUES( ?, ?, 0, SYSDATE, ?, SYSDATE) ";
+			stmt = conn.prepareStatement(sql2);
+
+			stmt.setString(1, a.getAccountId());
+			stmt.setString(2, a.getAccountOwnerId());
+			stmt.setString(3, a.getPw());
+			
+			stmt.executeUpdate();
+			stmt.close();
+			//트랜잭션 처리
+			conn.commit();
+			
+			// 계좌정보 
+			//계좌주 정보 ,계좌정보 생성 성공 메시지
+			result = true;
+		
+
+
+		}catch (ClassNotFoundException | SQLException e) {
+			try {
+				// 롤백 액션 진행
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+			}
+			try {
+				OracleConnection.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return result;
+
+	}
+
+	
 }

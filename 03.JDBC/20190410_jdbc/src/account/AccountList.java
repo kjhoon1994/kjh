@@ -10,12 +10,14 @@ public class AccountList {
 	private String lastUpdateDate;
 	private String accountOwnerName;
 	private String accountOwnerPhone;
+	private String accountOwnerId;
+	
 	public AccountList() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public AccountList(String accountId, int balance, String accountCreateDate, String lastUpdateDate,
-			String accountOwnerName, String accountOwnerPhone) {
+			String accountOwnerName, String accountOwnerPhone, String accountOwnerId) {
 		super();
 		this.accountId = accountId;
 		this.balance = balance;
@@ -23,10 +25,17 @@ public class AccountList {
 		this.lastUpdateDate = lastUpdateDate;
 		this.accountOwnerName = accountOwnerName;
 		this.accountOwnerPhone = accountOwnerPhone;
+		this.accountOwnerId = accountOwnerId;
 	}
 	public AccountList(String accountOwnerName, String accountOwnerPhone) {
 		this.accountOwnerName = accountOwnerName;
 		this.accountOwnerPhone = accountOwnerPhone;
+	}
+	public String getAccountOwnerId() {
+		return accountOwnerId;
+	}
+	public void setAccountOwnerId(String accountOwnerId) {
+		this.accountOwnerId = accountOwnerId;
 	}
 	public String getAccountId() {
 		return accountId;
@@ -66,7 +75,7 @@ public class AccountList {
 	}
 	@Override
 	public String toString() {
-		return String.format("%s / %d / %s / %s / %s / %s%n ", accountId, balance, accountCreateDate, lastUpdateDate,
+		return String.format("%s / %d / %s / %s / %s / %s%n", accountId, balance, accountCreateDate, lastUpdateDate,
 				accountOwnerName, accountOwnerPhone);
 	}
 	

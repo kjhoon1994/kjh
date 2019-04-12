@@ -48,6 +48,11 @@ INSERT INTO AccountOwner_ (accountOwnerId,accountOwnerName,accountOwnerPhone)
 VALUES('A001', 'È«±æµ¿', '010-1111-1111');
 INSERT INTO AccountOwner_ (accountOwnerId,accountOwnerName,accountOwnerPhone)
 VALUES('A002', 'À¯¸®¾ß', '010-1111-1112');
+INSERT INTO AccountOwner_ (accountOwnerId,accountOwnerName,accountOwnerPhone)
+VALUES('A003', '±èÀçÈÆ', '010-1111-1113');
+INSERT INTO AccountOwner_ (accountOwnerId,accountOwnerName,accountOwnerPhone)
+VALUES('A004', '¹Ú±æµ¿', '010-1111-1114');
+
  
 INSERT INTO Account_(accountId,accountOwnerId ,balance ,accountCreateDate ,pw ,lastUpdateDate) 
 VALUES('111-1111-1', 'A001', 50000, '2019-03-03', '1234', '2019-04-01');
@@ -55,6 +60,11 @@ INSERT INTO Account_(accountId,accountOwnerId ,balance ,accountCreateDate ,pw ,l
 VALUES('111-1111-2', 'A001', 40000, '2019-03-03', '1234', '2019-04-01');
 INSERT INTO Account_(accountId,accountOwnerId ,balance ,accountCreateDate ,pw ,lastUpdateDate) 
 VALUES('111-1111-3', 'A002', 60000, '2019-03-01', '1234', '2019-03-20');
+INSERT INTO Account_(accountId,accountOwnerId ,balance ,accountCreateDate ,pw ,lastUpdateDate) 
+VALUES('111-1111-4', 'A003', 0, SYSDATE, '2345', SYSDATE);
+INSERT INTO Account_(accountId,accountOwnerId ,balance ,accountCreateDate ,pw ,lastUpdateDate) 
+VALUES('111-1111-5', 'A004', 0, SYSDATE, '2345', SYSDATE);
+
  
 INSERT INTO AccountHistory_(accountId,money,inoutdate,gubun,balance)
 VALUES('111-1111-1',80000,'2019-03-03','ÀÔ±Ý',80000);
@@ -74,8 +84,7 @@ COMMIT;
 
 SELECT accountId, balance, TO_CHAR(accountCreateDate,'YYYY-MM-DD') accountCreateDate, To_CHAR(lastUpdateDate,'YYYY-MM-DD') lastUpdateDate, accountOwnerName, accountOwnerPhone
     FROM account_ a , accountowner_ ao
-    WHERE a.accountownerid = ao.accountownerid
-    AND a.accountId = '111-1111-1';
+    WHERE a.accountownerid = ao.accountownerid;
 -----------------------------------------------------------------    
 -- ÇöÀç ÀÜ¾× È®ÀÎ¿ë Äõ¸®
 SELECT balance
@@ -107,4 +116,11 @@ SELECT accountId, pw
 SELECT CONCAT('111-',SUBSTR((REPLACE(SUBSTR(MAX(accountId),5),'-')+1),1,4)||'-'||SUBSTR((REPLACE(SUBSTR(MAX(accountId),5),'-')+1),5)) newaccountId
     FROM account_;
     
-    
+SELECT a.accountId,a.accountOwnerId,a.balance, a.accountCreateDate,a.pw,a.lastUpdateDate,ao.accountOwnerId
+    FROM account_ a , accountOwner_ ao
+    WHERE a.accountOwnerId= ao.accountOwnerId;
+
+DELETE FROM accountOwner_
+    WHERE accountOwnerId= 'A004';
+
+
