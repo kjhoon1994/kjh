@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+
+/*상태 선택자*/
+:focus {
+	background-color: orange;
+}
+
+:checked+span {
+	color: orange;
+}
+:disabled{
+	color : salmon;}
+</style>
+</head>
+<body>
+
+	<h1>CSS Selector</h1>
+
+	First name:
+	<br>
+	<input type="text" name="firstname" value="Mickey">
+	<br> Last name:
+	<br>
+	<input type="text" name="lastname" value="Mouse" disabled="disabled">
+	<br>
+	<br>
+
+	<input type="checkbox" name="vehicle" value="Bike"><span>I have a
+	bike</span>
+	<br>
+	<input type="checkbox" name="vehicle" value="Cycle"><span>I have a
+	cycle</span>
+	<br>
+
+	<input type="submit" value="Submit">
+</body>
+</html>
