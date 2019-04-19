@@ -8,10 +8,10 @@
 <body>
 <h1>Javascript</h1>
 <div id="demo">결과보기</div>
- 
- 
+
+
 <script>
-    
+	
 var sub1 = parseInt(Math.random()*101);
 var sub2 = parseInt(Math.random()*101);
 var sub3 = parseInt(Math.random()*101);
@@ -20,9 +20,15 @@ console.log(total);
 var avg = (total /3);
 var avg1 = avg.toPrecision(3);
 console.log(avg);
-var msg = "sub1의 점수 :"+ sub1 + "<br>sub2의 점수 :"+ sub2 + "<br>sub3의 점수 :"
-+ sub3 + "<br>총점: " + total
+var msg = "sub1의 점수 :"+ sub1 + "<br>sub2의 점수 :"+ sub2 + "<br>sub3의 점수 :"+ sub3 + "<br>총점: " + total
 + "<br>평균: " + avg1;
+if (avg>60){
+	msg+= "<br>결과: 합격";
+}
+else{
+	msg+= "<br>결과: 불합격";
+}
+
 document.getElementById("demo").innerHTML = msg;
 </script>
 </body>

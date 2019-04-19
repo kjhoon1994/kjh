@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+</head>
+<body>
+<h1>Javascript</h1>
+<div id="demo">결과보기</div>
+
+
+<script>
+	
+	var sub1 = parseInt(Math.random()*101);
+	var sub2 = parseInt(Math.random()*101);
+	var sub3 = parseInt(Math.random()*101);
+	var total = sub1 + sub2 + sub3;
+	
+	var avg = (total /3);
+	var avg1 = avg.toPrecision(3);
+	
+	var msg = "sub1의 점수 :"+ sub1 + "<br>sub2의 점수 :"+ sub2 
+	+ "<br>sub3의 점수 :"+ sub3 + "<br>총점: " + total
+		+ "<br>평균: " + avg1;
+	
+	if (avg >= 60 && sub1 >= 40 && sub2 >= 40 && sub3 >= 40){
+		msg += "<br>결과: 합격";
+	}
+	else if(avg >= 60){
+		msg += "<br>결과: 과락";
+	}
+	else{
+		msg += "<br>결과: 불합격";
+	}
+
+	document.getElementById("demo").innerHTML = msg;
+</script>
+</body>
+</html>
