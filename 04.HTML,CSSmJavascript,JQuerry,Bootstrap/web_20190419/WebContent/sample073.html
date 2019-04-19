@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+</head>
+<body>
+
+<div id="demo">결과보기</div>
+
+<script>
+	var greeting = "";
+	var hour = new Date().getHours();
+	console.log(hour);
+	
+	if(hour < 12){
+		greeting="오전입니다.";
+	}
+	else{
+		greeting="오후입니다.";
+	}
+
+	document.getElementById("demo").innerHTML = greeting;	
+</script>
+</body>
+</html>

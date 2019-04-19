@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+</head>
+<body>
+<h1>Javascript</h1>
+<div id="demo">결과보기</div>
+
+
+<script>
+	/*
+	문제) 거스름돈(0 ~ 5,000) 계산
+	1000원, 500원, 100원, 50원, 10원의 갯수 출력
+	*/
+	var a = Math.random();
+	var b;
+	var change = parseInt(a * 5001);
+	console.log(change);
+	
+	var msg = "현재 잔액은" + change + "입니다."+  "<br>거스름돈은 <br>"
+	
+	b=parseInt(change/1000);
+	msg += "1000원: "+ b + "장<br>";
+	change = change %1000;
+	
+	b=parseInt(change/500);
+	msg += "500원: "+ b + "개<br>";
+	change = change %500;
+	
+	b=parseInt(change/100);
+	msg += "100원: "+ b + "개<br> ";
+	change = change %100;
+	
+	b=parseInt(change/50);
+	msg += "50원: "+ b + "개<br> ";
+	change = change %50;
+	
+	b=parseInt(change/10);
+	msg += "10원: "+ b + "개 ";
+	change = change %10;
+	
+document.getElementById("demo").innerHTML = msg;
+</script>
+</body>
+</html>

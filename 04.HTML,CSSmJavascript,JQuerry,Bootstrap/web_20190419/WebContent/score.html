@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+</head>
+<body>
+<h1>Javascript</h1>
+<div id="demo">결과보기</div>
+
+
+<script>
+	/* 
+	문제) 성적 결과 등급 출력. 난수 발생
+	90~100 ->A 등급
+	80~89  ->B 등급
+	70~79  ->C 등급
+	60~69  ->D 등급
+	0 ~59  ->F 등급
+	*/
+	var a = Math.random();
+	var b = parseInt(a* 101);
+
+	console.log(a);
+	console.log(b);
+	var rank_ = "점수 :" + b + "<br>등급: ";
+	
+	 if(b>=90){
+		 rank_ += "A등급입니다."; 
+	 }
+	 else if (b>=80){
+		 rank_ += "B등급입니다.";
+	 }
+	 else if (b>=70){
+		 rank_ += "C등급입니다.";
+	 }
+	 else if (b>=60){
+		 rank_ += "D등급입니다.";
+	 }
+	 else {
+		 rank_ += "F등급입니다.";
+	 }
+
+document.getElementById("demo").innerHTML = rank_;
+</script>
+</body>
+</html>

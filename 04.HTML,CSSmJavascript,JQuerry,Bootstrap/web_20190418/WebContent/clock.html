@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+</head>
+<body>	
+<h1>Javascript_ 시스템의 날짜 시간 출력</h1>
+
+<div id="demo"></div>
+
+
+<script>
+	var date = new Date();
+	
+	var year = date.getFullYear();
+	var mon = date.getMonth() +1;
+	var day = date.getDate();
+	var hours =date.getHours();
+	var minutes= date.getMinutes();
+	var seconds =date.getSeconds();
+	
+ 
+	
+document.getElementById("demo").innerHTML = year+ "년 "+ mon + "월 "+ day + "일 " + hours + "시 " 
++ minutes+ "분 " + seconds + "초 ";  
+</script>
+</body>
+</html>
