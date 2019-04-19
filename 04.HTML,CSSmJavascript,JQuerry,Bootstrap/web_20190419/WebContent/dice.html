@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+</head>
+<body>
+<h1>Javascript</h1>
+<div id="demo">결과보기</div>
+
+
+<script>
+	/*
+		문제) 주사위 2개를 던져 숫자들을 출력 하는 과정을 무한 반복
+		주사위 2개가 동일한 숫자이면 중단.
+	
+	 */
+	var result = "";
+		
+	while(true){
+		var dice1 = parseInt(Math.random()*6+1);
+		var dice2 = parseInt(Math.random()*6+1);
+		result += "("+ dice1 + "," + dice2 + ")";
+		
+		if(dice1 == dice2) break;
+	} 
+
+	document.getElementById("demo").innerHTML = result;
+</script>
+</body>
+</html>
