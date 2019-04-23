@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+		var r,g,b;
+
+	function myFunction(a) {
+		if (a == r) {
+			r = parseInt(Math.random() * 256);
+		}
+		if (a == g) {
+			g = parseInt(Math.random() * 256);
+		}
+		if (a == b) {
+			b = parseInt(Math.random() * 256);
+		}
+		console.log(r);
+		console.log(g);
+		console.log(b);
+		
+		document.getElementById("demo").style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+		document.getElementById("rgb_").innerHTML = "rgb("+ r + "," + g + "," + b + ")";
+	}
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	<h2 id=rgb_>rgb(xx,xx,xx)</h2>
+	<div id="demo"
+		style="width: 500px; border: 1px orange solid; min-height: 100px; background-color: white; text-align : center">결과보기</div>
+
+	<button onclick="myFunction(r)">red</button>
+	<button onclick="myFunction(g)">green</button>
+	<button onclick="myFunction(b)">blue</button>
+
+</body>
+</html>

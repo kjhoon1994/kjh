@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+	/* 직위 저장용 배열*/
+	var joblist= [["JOB001", "부장", "4000000"], ["JOB002", "상무", "3000000"], ["JOB003", "대리", "25000000"], ["JOB004", "사원", "2000000"]];
+
+	function myFunction(){
+		var job = document.getElementById("mySelect").value;
+		
+		var jobs = search(job);
+		  
+		var sss = "아이디 :" + jobs[0] + "<br>직위명 :" + jobs[1] + "<br>기본금 :" + jobs[2];
+        document.getElementById("demo").innerHTML = sss;
+	}
+	
+	function search(jid){
+		 var res= undefined;
+		 	for(var i =0; i<joblist.length; ++i){
+		 		var temp = joblist[i];
+		 			if(jid == temp[0]) {
+		 				res = temp;
+		 			}
+		 	}
+	return res;
+	}
+
+</script>
+
+</head>
+<body>
+
+<h1>Javascript</h1>
+
+	
+	<select id="mySelect" onchange="myFunction()">
+		<option value="JOB001">부장</option>
+		<option value="JOB002">과장</option>
+		<option value="JOB003">대리</option>
+		<option value="JOB004">사원</option>
+	</select>
+	
+	<div id="demo">결과보기</div>
+	
+
+</body>
+</html>

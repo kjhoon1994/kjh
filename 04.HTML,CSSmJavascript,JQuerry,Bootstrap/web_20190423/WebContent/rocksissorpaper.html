@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+	var str = " ";
+	window.onload = function() {
+		var r = document.getElementById("rock");
+		var s = document.getElementById("scissors");
+		var p = document.getElementById("paper");
+		
+
+		s.onclick = function() {
+			myFunction(1);	
+		};
+		r.onclick = function() {
+			myFunction(2);	
+		};
+		p.onclick = function() {
+			myFunction(3);	
+		};
+	};
+
+	function myFunction(a) {
+		var rsps = (parseInt(Math.random() * 3)+1);
+			
+		if(a == rsps){
+			str += "무승부<br>";
+			
+		}
+		if(((3+a-rsps)%3) == 1){
+			str +=" 사용자 승<br>";
+		
+		}
+		
+		if(((3+a-rsps)%3) == 2){
+			str +=" 컴퓨터 승<br>";
+			
+		}
+		document.getElementById("demo").innerHTML = str;
+		
+		
+	}
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	<button id= "scissors">가위</button>
+	<button id= "paper">보</button>
+	<button id= "rock">바위</button>
+	
+	<div id="demo">가위바위보</div>
+
+	
+</body>
+</html>
