@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+		
+		var arr = [];
+		arr[0] = [1, 2, 3, 4, 5];
+		arr[1] = [6, 7, 8, 9, 10];
+		arr[2] = [11, 12, 13, 14, 15];
+		
+		var txt = "<table>";
+		for (var a = 0; a<arr.length; ++a) {
+			var temp = arr[a];
+			txt += "<tr>";
+			for (var b = 0; b<temp.length; ++b) {
+				txt += "<td style='text-align:right;'>" + temp[b] + "</td>";
+			}
+			txt += "</tr>";
+		}
+		txt += "</table>";
+	
+		document.getElementById("demo").innerHTML = txt;
+	</script>
+</body>
+</html>

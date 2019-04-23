@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style>
+	
+	table td.right  {
+		text-align: right;
+	}
+</style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		/*
+		[문제]2차원 배열을 이용한 석차 계산 및 출력
+		출력 예)
+		1)	hong	100	 1등
+		2)	park	 80	 6등
+		3)	choi	 90	 3등
+		4)	kim		 50	10등
+		5)	lee		 60	 9등
+		6)	park	 85	 5등
+		7)	kim		 80	 6등
+		8)	jeong	 90	 3등
+		9)	choi	100	 1등
+		10)	park	 75	 8등
+		*/
+		
+		//과목1에 대한 점수 및 석차 저장
+		var sub1 = [["hong", 100, 1], ["park", 80, 1], ["choi", 90, 1]
+		      , ["kim", 50, 1], ["lee", 60, 1], ["park", 85, 1]
+		      , ["kim", 80, 1], ["jeong", 90, 1], ["choi", 100, 1]
+		      , ["park", 75, 1]];
+	
+	   
+	   //석차 계산 과정 추가
+       for (var i = 0; i < sub1.length; ++i) {
+            for (var j = 0; j < sub1.length; ++j) {
+                if (sub1[i][1] > sub1[j][1]) {
+                	sub1[j][2]++;
+                }
+            }
+        }
+ 
+	   
+	   //과목1에 대한 점수 및 석차 출력
+	   	var txt = "<table>";
+		for (var a = 0; a<sub1.length; ++a) {
+			var temp = sub1[a];
+			txt += "<tr>";
+			txt += "<td class='right'>" + (a+1) + ")</td>";
+			txt += "<td>" + temp[0] + "</td>";
+			txt += "<td class='right'>" + temp[1] + "</td>";
+			txt += "<td class='right'>" + temp[2] + "등</td>";
+			txt += "</tr>";
+		}
+		txt += "</table>";
+	
+		document.getElementById("demo").innerHTML = txt;
+	</script>
+</body>
+</html>

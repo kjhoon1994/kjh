@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		/*
+		문제) 사용자가 원하는 숫자를 여러개 입력받고, 그 숫자들의 합을 출력.
+		배열과 prompt 명령 사용.
+		출력형태)
+		10
+		20
+		30
+		----
+		60
+		*/
+		
+		var result = "";
+		var narr = [];
+		var num;
+		var sum = 0;
+		
+		while(true) {
+		    num = prompt("숫자("+(narr.length+1)+")를 입력해주세요 (종료: 취소)");
+		    if(num == null)  break;
+		    narr[narr.length] = num;
+		}
+		 
+		for(var i = 0; i < narr.length; ++i) {
+		    sum += parseInt(narr[i]);
+		    result += narr[i] + "<br>";
+		}
+		 
+		result += "-----<br>" + sum;
+		 
+		 
+		document.getElementById("demo").innerHTML = result;
+		
+	</script>
+</body>
+</html>

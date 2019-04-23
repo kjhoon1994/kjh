@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		var txt = "";
+		
+		var person = prompt("Please enter your name", "Harry Potter");
+		
+		if (person == null) {
+			console.log("취소(Cancel) 버튼 클릭한 상태");
+		} else if (person == "") {
+			console.log("입력값 없이 확인(OK) 버튼 클릭한 상태");
+		} else {
+			console.log("입력값 존재하고 확인(OK) 버튼 클릭한 상태");
+			console.log(typeof(person));
+			txt = "Hello " + person + "! How are you today?";
+		}
+	
+		document.getElementById("demo").innerHTML = txt;
+	</script>
+</body>
+</html>

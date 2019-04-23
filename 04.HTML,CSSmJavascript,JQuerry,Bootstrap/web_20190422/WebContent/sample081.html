@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		var cars = [];
+		
+		while(true) {
+			var car = prompt("자동차 이름(" + (cars.length + 1) + ")을 추가합니다. 종료-취소버튼", "car name");
+			if (car == null) break;
+			cars[cars.length] = car;
+		}
+	
+		document.getElementById("demo").innerHTML = cars;
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+	
+	
+	function myFunction(a){
+		var result = "";
+		for(var i = 1; i <10; ++i){
+			result += a + "*" + i + "=" + a*i + "<br>";
+		}
+	document.getElementById("demo").innerHTML = result;
+	
+}
+
+
+</script>
+</head>
+<body>
+<h1>Javascript</h1>
+
+
+<button onclick="myFunction(1)">1단</button>
+<button onclick="myFunction(2)">2단</button>
+<button onclick="myFunction(3)">3단</button>
+<button onclick="myFunction(4)">4단</button>
+<button onclick="myFunction(5)">5단</button>
+<button onclick="myFunction(6)">6단</button>
+<button onclick="myFunction(7)">7단</button>
+<button onclick="myFunction(8)">8단</button>
+<button onclick="myFunction(9)">9단</button>
+
+<div id="demo">결과보기</div>
+</body>
+</html>

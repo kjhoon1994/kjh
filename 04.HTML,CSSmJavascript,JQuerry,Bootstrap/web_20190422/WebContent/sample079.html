@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		var cars = [];
+		console.log(cars.length);
+		cars[0] = "Saab";
+		console.log(cars.length);
+		cars[1] = "Volvo";
+		console.log(cars.length);
+		cars[2] = "BMW";
+		console.log(cars.length);
+		cars[cars.length] = "new Car";
+		
+		for (var a = 0; a < cars.length; ++a) {
+			console.log(cars[a]);
+		}
+	
+		document.getElementById("demo").innerHTML = cars;
+	</script>
+</body>
+</html>

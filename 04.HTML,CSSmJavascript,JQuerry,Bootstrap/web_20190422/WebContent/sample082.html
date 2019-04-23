@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		/*
+		문제) 사용자가 원하는 단을 입력받고, 구구단 출력. prompt 명령을 이용해서 외부 입력.
+		출력형태)
+		5 * 1 = 5
+		5 * 2 = 10
+		...
+		5 * 9 = 45
+		*/
+	
+		var result = "";
+		var num = prompt("출력을 원하는 단을 입력하세요 (종료: 취소)");
+		if(num != null) {
+		    for(var i = 1; i <= 9; ++i) {
+		        result += num + " x " + i + " = " + (num*i) + "<br>"
+		    }
+		}
+		document.getElementById("demo").innerHTML = result;
+		
+	</script>
+</body>
+</html>

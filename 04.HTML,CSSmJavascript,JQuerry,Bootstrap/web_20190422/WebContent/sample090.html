@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+tr:nth-child(odd) {
+	background-color: #f2f2f2
+}
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+</style>
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+
+	<script>
+	
+		var arrays = [];
+		
+		while(true) {
+			var a = prompt("'번호 이름 과목1 과목2 과목3' 항목의 자료 입력", "");
+			if (a == null || a == "") break;
+			var arr = a.split(" ");
+			arrays.push(arr);
+		}
+		
+		
+		//총점, 평균, 석차 계산 및 저장
+		for (var i = 0; i < arrays.length; ++i) {
+			var temp = arrays[i];
+			var tot = parseInt(temp[2]) + parseInt(temp[3])	+ parseInt(temp[4]);
+			temp.push(tot);
+			var avg = tot / 3;
+			temp.push(avg.toFixed(1));
+			temp.push(1);
+		}
+		for (var i = 0; i < arrays.length; ++i) {
+			var temp1 = arrays[i];
+			for (var j = 0; j < arrays.length; ++j) {
+				var temp2 = arrays[j];
+				if (temp1[5] > temp2[5]) {
+					++temp2[7];
+				}
+			}
+		}
+		
+		var txt = "<table>";
+		txt += "<tr><th>번호</th><th>이름</th><th>과목1</th><th>과목2</th><th>과목3</th><th>총점</th><th>평균</th><th>석차</th></tr>";
+		for (var a = 0; a < arrays.length; ++a) {
+			var temp = arrays[a];
+			txt += "<tr>";
+			txt += "<td>" + temp[0] + "</td>";
+			txt += "<td>" + temp[1] + "</td>";
+			txt += "<td>" + temp[2] + "</td>";
+			txt += "<td>" + temp[3] + "</td>";
+			txt += "<td>" + temp[4] + "</td>";
+			txt += "<td>" + temp[5] + "</td>";
+			txt += "<td>" + temp[6] + "</td>";
+			txt += "<td>" + temp[7] + "</td>";
+			txt += "</tr>";
+		}
+		txt += "</table>";
+		if (arrays.length == 0)
+			txt += "<p>출력할 정보가 없습니다</p>";
+		if (arrays.length > 0)
+			txt += "<p>총 " + arrays.length + "명</p>";
+		document.getElementById("demo").innerHTML = txt;
+	</script>
+</body>
+</html>
