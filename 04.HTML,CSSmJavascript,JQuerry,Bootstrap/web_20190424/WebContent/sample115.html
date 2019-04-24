@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+	function myFunction(){
+		var imgs = document.images;
+		console.log(imgs);
+		for (var a=0; a<imgs.length; ++a){
+			imgs[a].style.width = "150px";
+		}
+}
+
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	
+	<div id="demo"><img src="img/apeach.PNG"><img src="img/lian.PNG"><img src="img/neo.PNG"><img src="img/prodo.PNG"></div>
+	
+	<button onclick="myFunction()">click me</button>
+
+</body>
+</html>
