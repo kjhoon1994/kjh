@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+	function myFunction(){
+		var myElement = document.getElementById("intro01");
+		document.getElementById("demo").innerHTML = "The text from " + myElement.innerHTML;
+	}
+	function myStyle(){
+		var myElement = document.getElementById("intro02");
+		myElement.style.color = "green";
+		myElement.style.background = "salmon";
+		
+	}
+	function mySelector(){
+		var myElement = document.querySelector("#intro01");
+		myElement.innerHTML = "How are you??";
+		
+	}
+</script>
+
+</head>
+<body>
+<h1>Javascript</h1>
+
+<p id="intro01">Hello World!</p>
+<p id="intro02">
+Lorem ipsum dolor sit amet <b>sed diam nonummy </b>liquam erat volutpat.
+</p>
+
+<div id="demo">결과보기</div>
+
+<button onclick="myFunction()">click me.</button>
+<button onclick="myStyle()">Style Change.</button>
+<button onclick="mySelector()">CSS Selector.</button>
+</body>
+</html>

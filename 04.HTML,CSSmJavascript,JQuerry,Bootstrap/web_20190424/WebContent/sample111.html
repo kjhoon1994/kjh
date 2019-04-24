@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+function myFunction(){
+	var myElements = document.getElementsByTagName("p");
+	console.log(myElements);
+	
+	var myP1 = myElements[0];
+	myP1.innerHTML = "TEST";
+	
+	var myP2 = myElements[1];
+	myP2.style.color = "orange";
+ }
+
+function mySelector(){
+	var myElements = document.querySelectorAll("p");
+	
+	var myP1 = myElements[0];
+	myP1.innerHTML = "TEST";
+	
+	var myP2 = myElements[1];
+	myP2.style.color = "orange";
+}
+</script>
+
+</head>
+<body>
+<h1>Javascript</h1>
+<p>Hello World!</p>
+<p>This emxaple demonstrartes the <b>getElementsByTagName</b> method.</p>
+<div id="demo">결과보기</div>
+
+<button onclick="myFunction()">click me</button>
+<button onclick="mySelector()">CSS Selector</button>
+</body>
+</html>

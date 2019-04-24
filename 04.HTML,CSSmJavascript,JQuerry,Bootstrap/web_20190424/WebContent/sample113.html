@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+function myFunction(){
+	var x = document.getElementsByName("animal");
+	console.log(x);
+	
+	var i;
+	for(i =0; i <x.length; ++i){
+		if(x[i].type =="checkbox"){
+			x[i].checked = true;
+		}
+	}
+}
+function mySelector(){
+	var x = document.querySelectorAll("input[name='animal']");
+	console.log(x);
+	
+	var i;
+	for(i =0; i <x.length; ++i){
+		if(x[i].type =="checkbox"){
+			x[i].checked = true;
+		}
+	}
+}
+
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	
+	Cats: <input name="animal" type="checkbox" value="Cats">
+	Dogs: <input name="animal" type="checkbox" value="Dogs">
+	
+	<p>click the button to check all checkboxes that that have with the value "animal"</p>
+	
+	<div id="demo">결과보기</div>
+
+	<button onclick="myFunction()">click me</button>
+	<button onclick="mySelector()">CSS SELECTOR</button>
+</body>
+</html>
