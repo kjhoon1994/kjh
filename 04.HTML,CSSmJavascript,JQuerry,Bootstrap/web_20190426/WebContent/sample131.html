@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+</style>
+
+<script>
+	var members = [];
+	window.onload = function() {
+		init();
+		document.getElementById("btn").onclick = function() {
+			myFunction();
+		};
+	}; 
+	
+	function Member(mid, name, sub1, sub2, sub3){
+		this.mid = mid;
+		this.name = name; 
+		this.sub1 = sub1;
+		this.sub2 = sub2;
+		this.sub3 = sub3;
+		
+		this.tot = function(){
+			return (this.sub1 + this.sub2 + this.sub3);
+		}
+		
+		this.avg = function(){
+			var avg_ =(this.sub1 + this.sub2 + this.sub3) / 3;
+			return avg_.toPrecision(3);
+		}
+	}
+	function init() { 
+		members.push(new Member("M01", "HONG", 100, 95, 90));
+		members.push(new Member("M02", "PARK", 90, 80, 95));
+		members.push(new Member("M03", "KIM", 80, 70, 100));
+		
+		
+	}
+	function myFunction() {
+		//console.log(members);
+		var txt = "";
+		txt += "<h1>성적처리</h1>";
+		txt += "<table>";
+		txt += "<tr><th>번호</th><th>이름</th><th>과목1</th><th>과목2</th><th>과목3</th><th>총점</th><th>평균</th></tr>";
+		for (var a in members) {
+			var member = members[a];
+			txt += "<tr>";
+			txt += "<td>" + member.mid + "</td>";
+			txt += "<td>" + member.name + "</td>";
+			txt += "<td>" + member.sub1 + "</td>";
+			txt += "<td>" + member.sub2 + "</td>";
+			txt += "<td>" + member.sub3 + "</td>";
+			txt += "<td>" + member.tot() + "</td>";
+			txt += "<td>" + member.avg() + "</td>";
+			txt += "</tr>";
+		}
+		txt += "</table>";
+		if (members.length == 0)
+			txt += "<p>출력할 정보가 없습니다</p>";
+		if (members.length > 0)
+			txt += "<p>총 " + members.length + "명</p>";
+		document.getElementById("demo").innerHTML = txt;
+	}
+</script>
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+
+	<button id="btn">Click me.</button>
+
+	<div id="demo">결과보기</div>
+
+</body>
+</html>

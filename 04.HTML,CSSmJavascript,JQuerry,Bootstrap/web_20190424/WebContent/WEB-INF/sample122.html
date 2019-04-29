@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+	function myFunction(){
+		var intro02 = document.getElementById("intro02");
+		
+		console.log(intro02);
+		console.log(intro02.childNodes);
+		console.log(intro02.childNodes[0].nodeName);
+		console.log(intro02.childNodes[0].nodeType);
+		console.log(intro02.childNodes[0].nodeValue);
+		
+		console.log(intro02.childNodes[1].nodeName);
+		console.log(intro02.childNodes[1].nodeType);
+		console.log(intro02.childNodes[1].nodeValue);
+	}
+
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	
+	<p id="intro01">Hello World!</p>
+	<p id="intro02">
+	This example demonstrates the <b>getElementsById</b> method.
+	<div id="demo">결과보기</div>
+	
+	<button onclick="myFunction()">click me</button>
+
+</body>
+</html>

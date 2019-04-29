@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+div.style01 {
+	color : orange;
+	border:1px solid grey;
+	font-size: 2em;
+}
+</style>
+
+<script 
+	src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+
+	$(document).ready(function(){
+
+		$("#btn01").click(function(){
+			$("#demo").addClass("style01");
+		});
+		
+		$("#btn02").click(function(){
+			$("#demo").removeClass("style01");
+		});
+	});
+	
+	function myFunction(){
+		
+	}
+</script>
+
+</head>
+<body>
+	<h1>JQuery</h1>
+	<div id="demo" class="style01">결과보기</div>
+	
+	<button id="btn01">add class</button>
+	<button id="btn02">remove class</button>
+
+</body>
+</html>

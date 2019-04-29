@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+	
+<script>
+	window.onload = function() {
+		var btn = document.getElementById("btn");
+		btn.onclick = function(event) {
+			console.log(this);
+			console.log(event)
+			myFunction();
+		};
+	};	
+	
+	function myFunction() {
+		alert("Click 이벤트 발생");
+	}
+</script>
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+	<button id="btn">Click me.</button>
+
+</body>
+</html>

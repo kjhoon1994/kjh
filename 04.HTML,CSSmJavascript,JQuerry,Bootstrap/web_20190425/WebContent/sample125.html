@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style></style>
+	
+<script>
+	window.onload = function() {
+		document.getElementById("btn").onclick = function() {
+			myFunction();		
+		};
+	};	
+	
+	function myFunction() {
+		
+		var member = {mid:"M01", name:"hong", phone:"010-1234-1234"};
+		console.log("-------------");
+		console.log(member);
+		console.log(member.toString());
+		
+		console.log("-------------");
+		console.log(member.mid);
+		console.log(member.name);
+		console.log(member.phone);
+		
+		console.log("-------------");
+		console.log(member["mid"]);
+		console.log(member["name"]);
+		console.log(member["phone"]);
+		console.log("-------------");
+		for (var x in member) {
+			  console.log(member[x]);
+		}
+		
+	}
+</script>
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+	<button id="btn">Click me.</button>
+
+</body>
+</html>

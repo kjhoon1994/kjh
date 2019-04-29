@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+	
+	var h = 10;
+	var m = 0;
+		
+	function myFunction(){
+		console.log(h);
+		myImage(h);
+		(function() {
+			setInterval(() => {
+				myImage();
+			},1000);
+		})();	
+	}
+	
+	
+		
+	function myImage(){
+		
+		var b = document.getElementsByTagName("img");
+		b[0].src = "img/" + parseInt(h/10) + ".jpg";
+		b[1].src = "img/" + (h%10) + ".jpg";
+		b[3].src = "img/" + parseInt(m/10) + ".jpg";
+		b[4].src = "img/" + m%10 + ".jpg";
+				
+		if(m == 0){
+			h = h-1;
+			m = 60;
+		}
+		--m;
+		
+		
+		
+		
+	}
+
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	<div id="intro">
+		<img src="img/0.jpg"><img src="img/0.jpg"><img
+			src="img/colon.jpg"><img src="img/0.jpg"> <img
+			src="img/0.jpg">
+	</div>
+
+	분단위
+	<input type="text" id="timerStart" value="10">
+	<br>
+
+	<button onclick="myFunction(value)">Click me.</button>
+
+</body>
+</html>

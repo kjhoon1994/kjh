@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+
+th:hover {
+	background-color: #f5f5f5;
+}
+</style>
+<script>
+	var burgers = [];
+	var carts = [];
+	var views = [];
+	var extras = [];
+
+	window.addEventListener("load", function() {
+		init();
+		inviews();
+		inextra();
+		bugerList();
+
+	});
+
+	function burger(bid, bimg, bname, bprice, extrapay) {
+		this.bid = bid;
+		this.bimg = bimg;
+		this.bname = bname;
+		this.bprice = bprice;
+		this.extrapay = extrapay
+	}
+
+	function extra(eid, ename, eprice) {
+		this.eid = eid;
+		this.ename = ename;
+		this.eprice = eprice;
+	}
+
+	function cart(burger, count) {
+		this.burger = burger;
+		this.count = count;
+		this.lastprice = function() {
+			return burger.bprice + extra.eprice;
+		}
+		this.tprice = function() {
+			return (burger.bprice + extra.eprice) * count;
+		}
+
+	}
+
+	function view(bid, bimg, bname, bprice, details) {
+		this.bid = bid;
+		this.bimg = bimg;
+		this.bname = bname;
+		this.bprice = bprice;
+		this.details = details;
+
+	}
+
+	function init() {
+		burgers.push(new burger("B01", "1", "볼케이노칠리와퍼세트", 9600, 0));
+		burgers.push(new burger("B02", "2", "볼케이노칠리팩3", 16900, 0));
+		burgers.push(new burger("B03", "3", "볼케이노칠리팩1", 19900, 0));
+		burgers.push(new burger("B04", "4", "더블비프불고기", 5900, 0));
+	}
+
+	function inviews() {
+		views.push(new view("B01", "1", "볼케이노칠리와퍼세트", 9600,
+				"불에 직접 구운 100% 순쇠고기 패티, 풍미 터지는 비프칠리와 매콤한 할라피뇨가 만든 미국 남부의 맛 "));
+		views.push(new view("B02", "2", "볼케이노칠리팩3", 16900,
+				"볼케이노칠리와퍼+몬스터와퍼주니어+볼케이노칠리프라이+콜라R2"));
+		views.push(new view("B03", "3", "볼케이노칠리팩1", 19900,
+				"볼케이노칠리X+볼케이노칠리와퍼+프렌치프라이L+콜라R2"));
+		views.push(new view("B04", "4", "더블비프불고기", 5900,
+				"스모키 비프패티 2장, 짭쪼름한 불고기소스, 고소한 체다치즈가 어우러진 육즙 가득한 비프 불고기 버거"));
+
+	}
+
+	function finalpay() {
+
+	}
+
+	function inextra() {
+		extras.push(new extra("E01", "양상추", 0));
+		extras.push(new extra("E02", "토마토", 0));
+		extras.push(new extra("E03", "치즈", 300));
+		extras.push(new extra("E04", "패티", 1000));
+	}
+
+	function bugerList() {
+		var result = "";
+
+		result += "<table>";
+		result += "<tr>";
+		for ( var x in burgers) {
+			var temp = burgers[x];
+			result += "<th>";
+			result += "<img src='img/"+ temp.bimg +".png'><br>";
+			result += temp.bname + "<br>";
+			result += temp.bprice + "<br>";
+			result += "<button class='add' value="+ temp.bid +">담기</button>&nbsp<button class='view' value="+ temp.bid +">상세보기</button>";
+			result += "</th>";
+		}
+		result += "</tr>";
+		result += "</table>";
+		document.getElementById("burgers").innerHTML = result;
+
+		var add = document.getElementsByClassName("add");
+		for ( var x in add) {
+			var temp = add[x];
+
+			temp.onclick = function() {
+				btnAdd(this.value);
+			}
+		}
+
+		var view = document.getElementsByClassName("view");
+		for ( var x in view) {
+			var temp = view[x];
+
+			temp.onclick = function() {
+				btnView(this.value);
+			}
+		}
+	}
+
+	function cartlist() {
+
+	}
+
+	function btnAdd(value) {
+
+		for ( var x in burgers) {
+			var temp = burgers[x];
+			var swit = 0;
+			if (temp.bid == value) {
+				for ( var y in carts) {
+					var temp2 = carts[y];
+					if (temp2.burger.bid == value) {
+						console.log(value);
+						alert("제품이 담겼습니다.");
+						temp2.count++;
+						swit = 1;
+					}
+				}
+				if (swit == 0) {
+					alert("제품이 담겼습니다.");
+					carts.push(new cart(temp, 1));
+				}
+			}
+		}
+		console.log(carts);
+		cartView();
+	}
+
+	function cartView() {
+		//console.log(members);
+		var txt = "";
+		txt += "<table id='table2'>";
+		txt += "<tr><th><input type='checkbox' id='ckall' value='all'></th>";
+		txt += "<th>상품이미지</th><th>상품명</th><th>수량</th><th>가격</th><th></th></tr>";
+		for ( var a in carts) {
+			var cart = carts[a];
+			txt += "<tr>";
+			txt += "<th><input type='checkbox' class='cartcheck' value='all'></th>";
+			txt += "<th>"
+					+ "<img src='img/"+ cart.burger.bimg +".png' width ='100' height = '75'>"
+					+ "</th>";
+			txt += "<th>" + cart.burger.bname + "</th>";
+			txt += "<th><input type='number' class='quantity' min='1' max='99'></th>";
+			txt += "<th>" + cart.tprice() + "</th>";
+			txt += "<th><button class='delete' value="+cart.burger.bid+">삭제</button></th>";
+			txt += "</tr>";
+		}
+		txt += "<tr><td colspan='6'><button id='seldel'>선택항목삭제</button></td></tr>";
+		txt += "</table>";
+
+		document.getElementById("carts").innerHTML = txt;
+
+		var num = document.getElementsByClassName("quantity");
+		for ( var a in num) {
+			num[a].onchange = function() {
+				console.log(event);
+				carts[a].count = num[a].value;
+			}
+		}
+
+		var del = document.getElementsByClassName("delete");
+
+		for ( var a in del) {
+			del[a].onclick = function() {
+				burderDelete(this.value);
+			}
+		}
+
+		var ckall = document.getElementById("ckall");
+		var cartcheck = document.getElementsByClassName("cartcheck");
+
+		ckall.onclick = function() {
+			for ( var a in cartcheck) {
+				if (cartcheck[a].checked) {
+					cartcheck[a].checked = false;
+				} else {
+					cartcheck[a].checked = true;
+				}
+			}
+		}
+
+		var seldel = document.getElementById("seldel");
+		seldel.onclick = function() {
+			for ( var a in cartcheck) {
+				if (cartcheck[a].checked) {
+					var con_test = confirm("선택한 매뉴 정보를 삭제할까요?");
+					if (con_test == true) {
+						carts.splice(a, 1);
+					}
+				}
+			}
+			cartView();
+		}
+	}
+
+	function btnView(value) {
+		var result = "<br><br>";
+
+		for ( var x in views) {
+			var temp = views[x];
+			if (temp.bid == value) {
+
+				result += "<table>";
+				result += "<tr>";
+
+				for ( var y in views) {
+					if (views[y].bid == value) {
+						var temp = views[y];
+						result += "<th>";
+						result += "<img src='img/"+ temp.bimg +".png'><br>";
+						result += temp.bname + "<br>";
+						result += temp.bprice + "<br>";
+						result += temp.details + "<br>";
+						result += "</th>";
+					}
+
+					result += "</tr>";
+					result += "</table>";
+
+				}
+
+			}
+
+		}
+		result += "<br><br>";
+		result += "<select name ='extra'>";
+		result += "<option value =''>재료선택</option>";
+		for ( var x in extras) {
+			result += "<option value ='extra'>" + extras[x].ename + " (+ "
+					+ extras[x].eprice + ")</option>";
+		}
+		result += "</select>&nbsp&nbsp";
+		result += "<button class ='addcart' value =" + extra.eid +">선택</button>";
+
+		var addcart = document.getElementsByClassName("addcart");
+		
+		addcart.onclick = function() {
+			for (var x in addcart) {
+				var temp = addcart[x];
+				if (temp[x].eid == extra.eid) {
+					burger.extrapay = extra.eprice;
+				}
+
+			}
+		cart.push(this.value,1);
+		}
+		document.getElementById("views").innerHTML = result;
+	}
+
+	function burderDelete(value) {
+		for ( var a in carts) {
+			if (carts[a].burger.bid == value) {
+				carts.splice(a, 1);
+			}
+		}
+		cartView();
+	}
+</script>
+</head>
+<body>
+	<h1>버거킹</h1>
+	<div id="burgers"></div>
+	<div id="views"></div>
+	<div id="carts"></div>
+</body>
+</html>

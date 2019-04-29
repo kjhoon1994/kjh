@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+div.style01 {
+	color : orange;
+	border:1px solid grey;
+	font-size: 2em;
+}
+</style>
+
+<script 
+	src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+
+	$(document).ready(function(){
+
+		$("#demo").mouseenter(function(){
+			$(this).addClass("style01");
+		});
+	
+		$("#demo").mouseleave(function(){
+			$(this).removeClass("style01");
+		});
+	});
+	
+	function myFunction(){
+		
+	}
+</script>
+
+</head>
+<body>
+	<h1>JQuery</h1>
+	<div id="demo">결과보기</div>
+	
+	
+
+</body>
+</html>

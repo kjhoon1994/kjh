@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+	function myFunction(){
+		myImage();
+		
+	
+		console.log("myFunction 함수 호출!");
+		(function () {
+			setInterval(() => {
+				myImage();			
+				
+			}, 1000);
+		})();
+	}
+	 function myImage(){
+		 var b = document.getElementsByTagName("img");
+			
+			var c = new Date();
+			var hours = c.getHours();
+			var mins= c.getMinutes();
+							
+			var first = parseInt(hours/10);
+			var two = hours%10;
+			var three = parseInt(mins/10);
+			var four = mins%10;
+			
+		
+			b[0].src = "img/" + first + ".jpg";
+			b[1].src = "img/" + two + ".jpg";
+							
+			b[3].src = "img/" + three + ".jpg";
+			b[4].src = "img/" + four + ".jpg";
+	 }
+	
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	<div id="demo"><img src="img/0.jpg"><img src="img/0.jpg"><img src="img/colon.jpg"><img src="img/0.jpg"><img src="img/0.jpg"></div>
+
+	<button onclick="myFunction()">click me</button>
+
+</body>
+</html>

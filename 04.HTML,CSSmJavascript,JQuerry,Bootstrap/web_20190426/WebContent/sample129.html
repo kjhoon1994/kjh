@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+	window.onload = function(){
+		document.getElementById("btn").onclick = function(){
+			myFunction();
+		}
+	};
+	
+	function Member(mid, name, phone, email){
+		this.mid = mid;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.toString = function(){
+			return this.mid + "/" + this.name + "/" + this.phone + "/" + this.email;
+			// "["return this.mid + "," + this.name + "," + this.phone + "," + this.email"]";
+		
+		};
+		
+	}
+	
+	function myFunction(){
+		
+		var m1 = new Member("M01", "HONG", "010-1234-1234", "hong@naver.com");
+		m1.nationality = "English";
+		m1.info = function(){
+			return this.name + "/" + this.nationality;
+		}
+		var m2 = new Member("M02", "PARK", "010-4567-4567", "park@naver.com");
+		
+		console.log(m1.toString());
+		console.log(m2.toString());
+		console.log(m1.nationality);
+		console.log(m1.info());
+		
+		/* 	
+		console.log(m2.nationality);
+		console.log(m2.info()); 
+		*/
+		
+	}
+
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	<div id="demo"></div>
+	
+	<button id="btn">click me</button>
+
+</body>
+</html>

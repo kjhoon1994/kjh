@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+</style>
+
+<script>
+	var members = [];
+	window.onload = function() {
+		init();
+		document.getElementById("btn").onclick = function() {
+			myFunction();
+		};
+	}; 
+	function init() {
+		members.push({
+			mid: "M01",
+			name : "hong",
+			phone : "010-1234-1234",
+			email : "hong@test.com",
+			toString : function() {
+			}
+		});
+		members.push({
+			mid: "M02",
+			name : "park",
+			phone : "010-1234-4321",
+			email : "park@naver.com",
+			toString : function() {
+			}
+		});
+		members.push({
+			mid: "M03",
+			name : "choi",
+			phone : "010-5678-7890",
+			email : "choi@naver.com",
+			toString : function() {
+			}
+		});
+		members.push({
+			mid: "M04",
+			name : "kim",
+			phone : "010-4321-9876",
+			email : "kim@sist.com",
+			toString : function() {
+			}
+		});
+	}
+	function myFunction() {
+		//console.log(members);
+		var txt = "";
+		txt += "<h1>Member List</h1>";
+		txt += "<table>";
+		txt += "<tr><th>번호</th><th>이름</th><th>전화번호</th><th>이메일</th></tr>";
+		for (var a in members) {
+			var member = members[a];
+			txt += "<tr>";
+			txt += "<td>" + member.mid + "</td>";
+			txt += "<td>" + member.name + "</td>";
+			txt += "<td>" + member.phone + "</td>";
+			txt += "<td>" + member.email + "</td>";
+			txt += "</tr>";
+		}
+		txt += "</table>";
+		if (members.length == 0)
+			txt += "<p>출력할 정보가 없습니다</p>";
+		if (members.length > 0)
+			txt += "<p>총 " + members.length + "명</p>";
+		document.getElementById("demo").innerHTML = txt;
+	}
+</script>
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+
+	<button id="btn">Click me.</button>
+
+	<div id="demo">결과보기</div>
+
+</body>
+</html>

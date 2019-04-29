@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style></style>
+
+<script>
+
+	function myFunction1(){
+		var intro =document.getElementById("intro");
+		console.log(intro.innerHTML);
+	}
+
+	function myFunction2(){
+		var intro =document.getElementById("intro");
+		console.log(intro.innerText);
+	}
+	
+	function myFunction3(){
+		var intro =document.getElementById("intro");
+		console.log(intro.textContent);
+	}
+</script>
+
+</head>
+<body>
+	<h1>Javascript</h1>
+	
+	<p id="intro">This p element contains a <span style="display:none">hidden span element</span> and a <span>visible span element</span>.</p>
+	
+	<div id="demo">결과보기</div>
+	
+	<button onclick="myFunction1()">innerHTML</button>
+	<button onclick="myFunction2()">innerText</button>
+	<button onclick="myFunction3()">textContent</button>
+</body>
+</html>

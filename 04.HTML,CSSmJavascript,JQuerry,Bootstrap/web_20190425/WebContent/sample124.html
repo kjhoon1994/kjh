@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+
+<style>
+#demo {
+	border: 2px solid orange;
+	padding: 50px;
+}
+</style>
+	
+<script>
+	window.addEventListener("load", function() {
+		
+		var btn01 = document.getElementById("btn01");
+		btn01.addEventListener("click", myBtn01);
+		
+		var btn02 = document.getElementById("btn02");
+		btn02.addEventListener("click", myBtn02);
+		
+	});	
+	
+	function myBtn01() {
+		var div = document.getElementById("demo");
+		div.addEventListener("mousemove", myFunction);
+	}
+	
+	function myBtn02() {
+		var div = document.getElementById("demo");
+		div.removeEventListener("mousemove", myFunction);
+	}
+	
+	function myFunction() {
+		var div = document.getElementById("demo");
+		div.innerHTML = Math.random();
+	}
+</script>
+
+</head>
+<body>
+
+
+	<h1>Javascript</h1>
+	
+	<div id="demo">결과보기</div>
+	<button id="btn01">addEventListener</button>
+	<button id="btn02">removeEventListener</button>
+
+</body>
+</html>
