@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+	.check{
+		background-color : green;
+	}
+</style>
+
+<script 
+	src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+	
+	$(document).ready(function(){
+		
+		$("#btn01").on("click",function(){
+			$(".check").prop("checked",true).parents("tr").addClass("check");
+			
+		});
+		
+		$("#btn02").on("click",function(){
+			$(".check").prop("checked",false).parents("tr").removeClass("check");
+			
+		});
+		
+		$(".check").on("change",function() {
+			if($(this).is(":checked")) {
+				$(this).parents("tr").addClass("check");
+			} else {
+				$(this).parents("tr").removeClass("check");
+			}
+		
+		});
+
+	});
+	
+	function myFunction(){
+		
+	}
+</script> 
+
+
+</head>
+<body>
+	<h1>JQuery</h1>
+	
+	<button id="btn01">전체선택</button>
+	<button id="btn02">전체해제</button>
+	
+	<table border='1' style='text-align:center'>
+	<tr><th></th><th width="200px">이름</th><th width="200px">전화번호</th></tr>
+	<tr><td><input type="checkbox" class="check"></td><td>홍길동</td><td>010-1234-1234</td></tr>
+	<tr><td><input type="checkbox" class="check"></td><td>박길동</td><td>010-4321-0011</td></tr>
+	<tr><td><input type="checkbox" class="check"></td><td>이길동</td><td>010-4678-7891</td></tr>
+	<tr><td><input type="checkbox" class="check"></td><td>김길동</td><td>010-2222-3333</td></tr>
+	
+	</table>
+	
+
+</body>
+</html>

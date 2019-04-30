@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+.descendants * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+</style>
+
+<script 
+	src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+
+	$(document).ready(function(){
+
+		//두개가 같은 결과가 나온다.		
+		//$("div").find("span").first().css({"color": "red", "border": "2px solid red"});
+		
+		$("div span:first").css({"color": "red", "border": "2px solid red"});
+	
+	});
+	
+	function myFunction(){
+		
+	}
+</script>
+
+</head>
+<body>
+	<h1>JQuery</h1>
+	<div class="descendants" style="width:500px;">div (current element) 
+  <p class="first">p (child)
+    <span>span (grandchild)</span>   
+  </p>
+  <p class="second">p (child)
+    <span>span (grandchild)</span>
+  </p> 
+</div>
+
+
+</body>
+</html>

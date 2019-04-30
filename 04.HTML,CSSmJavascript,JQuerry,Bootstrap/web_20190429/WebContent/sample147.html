@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+.siblings * {
+	display: block;
+	border: 2px solid lightgrey;
+	color: lightgrey;
+	padding: 5px;
+	margin: 15px;
+}
+</style>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+
+	$(document).ready(function(){
+
+		// $("h2").siblings().css({"color": "red", "border": "2px solid red"});
+		// $("h2").next().css({"color": "red", "border": "2px solid red"});
+
+		// $("h2").nextAll().css({"color": "red", "border": "2px solid red"});
+
+		// $("h2").prev().css({"color": "red", "border": "2px solid red"});
+
+		 $("h2").prevAll().css({"color": "red", "border": "2px solid red"});
+
+	});
+	
+	function myFunction(){
+		
+	}
+</script>
+
+</head>
+<body>
+	<h1>JQuery</h1>
+	<div>
+		div (parent)
+		<p>p</p>
+		<span>span</span>
+		<h2>h2</h2>
+		<h3>h3</h3>
+		<p>p</p>
+	</div>
+
+
+</body>
+</html>

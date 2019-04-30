@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쌍용교육센터</title>
+<style>
+table {
+	border : 1px solid black;
+}
+th,td{
+	border : 1px solid black;
+}
+tr{
+	text-align : center;
+	
+}
+</style>
+
+<script 
+	src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+
+	$(document).ready(function(){
+
+		$("#btn01").on("click",function(){
+			var tr="<tr><td><input type='checkbox' class='check'></td><td><input type='text'></td><td><input type='text'></td><td colspan='2'><button>Submit</button></tr>";
+			$("#intro tbody").append(tr);
+		});
+
+	});
+	
+	function myFunction(){
+		
+	}
+</script>
+
+</head>
+<body>
+	<h1>JQuery</h1>
+	<div id="demo">
+	
+		<table id="intro">
+		
+	<tr>
+	<th></th><th width="200px">이름</th><th width="200px">전화번호</th>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" class="check"></td><td>홍길동</td><td>010-1234-1234</td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" class="check"></td><td>박길동</td><td>010-4321-0011</td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" class="check"></td><td>이길동</td><td>010-4678-7891</td>
+	</tr>
+	
+	<tr>
+	<td><input type="checkbox" class="check"></td><td>김길동</td><td>010-2222-3333</td>
+	</tr>
+	
+		</table>
+	</div>
+	
+	<button id="btn01">추가</button>
+
+</body>
+</html>
