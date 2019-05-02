@@ -16,8 +16,8 @@
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()){
-			sb.append(String.format("<tr>"));
 			
+			sb.append(String.format("<tr>"));
 			sb.append(String.format("<td>%s</td>", rs.getString("id")));
 			sb.append(String.format("<td>%s</td>", rs.getString("name_")));
 			sb.append(String.format("<td>%s</td>", rs.getString("phone")));
