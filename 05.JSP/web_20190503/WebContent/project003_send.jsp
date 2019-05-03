@@ -44,7 +44,7 @@
 
 
 		<h1>회원 관리 v2.</h1>
-		<form action="project003_receive.jsp" method="post">
+		<form action="sample012.jsp" method="post">
 			<div class="form-group">
 				<label for="id">MID:</label> <input type="text" class="form-control"
 					id="id" name="id">

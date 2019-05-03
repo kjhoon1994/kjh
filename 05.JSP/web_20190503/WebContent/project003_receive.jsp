@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ page import="java.sql.* ,com.connection.*" %>
+<%@ page import="java.sql.* ,com.connection.*"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
 	String name_ = request.getParameter("name_");
 	String phone = request.getParameter("phone");
 	String email = request.getParameter("email");
-	
+
 	Connection conn = null;
 	PreparedStatement stmt = null;
 
@@ -16,30 +16,28 @@
 
 		String sql = "INSERT INTO members(id, name_, phone, email) VALUES (?, ?, ? ,?)";
 		stmt = conn.prepareStatement(sql);
-		
-		stmt.setString(1,id);
-		stmt.setString(2,name_);
-		stmt.setString(3,phone);
-		stmt.setString(4,email);
-		
+
+		stmt.setString(1, id);
+		stmt.setString(2, name_);
+		stmt.setString(3, phone);
+		stmt.setString(4, email);
+
 		stmt.executeUpdate();
 
-		
-		
-	 } catch (Exception e) {
-		 
-	    } finally {
-	        try {
-	            if (stmt != null)
-	                stmt.close();
-	        } catch (SQLException se2) {
-	        }
-	        try {
-	            MySQLConnection80.close();
-	        } catch (SQLException se) {
-	            se.printStackTrace();
-	        }
-	    }
+	} catch (Exception e) {
+
+	} finally {
+		try {
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException se2) {
+		}
+		try {
+			MySQLConnection80.close();
+		} catch (SQLException se) {
+			se.printStackTrace();
+		}
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -81,7 +79,7 @@
 
 		<h1>회원 관리 v2.</h1>
 		<p>회원 정보 추가 성공</p>
-		
+
 	</div>
 
 </body>
