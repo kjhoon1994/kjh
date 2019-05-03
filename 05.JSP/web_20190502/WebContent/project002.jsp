@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-	<%@ page import="java.sql.* ,com.connection.*" %>
+<%@ page import="java.sql.* ,com.connection.*"%>
 
 <%
 	StringBuilder sb = new StringBuilder();
-	
+
 	Connection conn = null;
 	PreparedStatement stmt = null;
 
 	try {
 		conn = MySQLConnection80.connect();
-			
+
 		String sql = "SELECT id, name_, phone, email FROM members";
 		stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
-		
-		while(rs.next()){
-			
+
+		while (rs.next()) {
+
 			sb.append(String.format("<tr>"));
 			sb.append(String.format("<td>%s</td>", rs.getString("id")));
 			sb.append(String.format("<td>%s</td>", rs.getString("name_")));
@@ -24,21 +24,21 @@
 			sb.append(String.format("<td>%s</td>", rs.getString("email")));
 			sb.append(String.format("</tr>"));
 		}
-			rs.close();
+		rs.close();
 	} catch (Exception e) {
-		
+
 	} finally {
-	      try {
-	          if (stmt != null)
-	             stmt.close();
-	       } catch (SQLException se2) {
-	       }
-	       try {
-	          MySQLConnection80.close();
-	       } catch (SQLException se) {
-	          se.printStackTrace();
-	       }
-	    }
+		try {
+			if (stmt != null)
+				stmt.close();
+		} catch (SQLException se2) {
+		}
+		try {
+			MySQLConnection80.close();
+		} catch (SQLException se) {
+			se.printStackTrace();
+		}
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -77,7 +77,7 @@
 <body>
 
 	<div class="container">
-	<h1>회원정보</h1>
+		<h1>회원정보</h1>
 		<div>
 			<table class="table">
 				<thead>
