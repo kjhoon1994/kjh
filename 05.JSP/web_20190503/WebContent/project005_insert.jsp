@@ -11,7 +11,7 @@
 	String name_ = request.getParameter("name_");
 	String phone = request.getParameter("phone");
 	String email = request.getParameter("email");
-
+	
 	// JDBC 액션
 	// SELECT -> 최초 실행시
 
@@ -20,6 +20,9 @@
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	int count = 0;
+
+	String result = "fail";;
+
 	try {
 		if (id != null) {
 
@@ -35,9 +38,11 @@
 
 			stmt.executeUpdate();
 			stmt.close();
+
+			result = "success";
+
 		}
-		
-	
+
 	} catch (Exception e) {
 
 	} finally {
@@ -53,6 +58,5 @@
 		}
 	}
 	// 강제 페이지 전환
-	response.sendRedirect("project005.jsp");
-
+	response.sendRedirect("project005.jsp?result=" + result);
 %>
