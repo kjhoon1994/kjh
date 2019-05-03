@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ page import="java.sql.* ,com.connection.*" %>
 <%
+	request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
 	String name_ = request.getParameter("name_");
 	String phone = request.getParameter("phone");
