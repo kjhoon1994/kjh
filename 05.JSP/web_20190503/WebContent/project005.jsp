@@ -8,15 +8,20 @@
 	System.out.println(result);
 	
 	StringBuilder sb1 = new StringBuilder();
+	
 	if(result==null){
 		result="";
 	}
+	
 	if(result.equals("success")){
-		sb1.append("<div class='alert alert-success alert-dismissible'>"+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>"+
+		sb1.append("<div class='alert alert-success alert-dismissible'>" + 
+	"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
 	"<strong>성공</strong> 사용자 등록을 성공하였습니다. </div>");
 	}
+	
 	if(result.equals("fail")){
-		sb1.append("<div class='alert alert-danger alert-dismissible'>"+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>"+
+		sb1.append("<div class='alert alert-danger alert-dismissible'>" + 
+	"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
 	"<strong>실패</strong> 사용자 등록을 실패하였습니다. </div>");
 	}
 	
