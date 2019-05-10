@@ -2,8 +2,11 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ page import="com.guestbook.*, java.util.*"%>
 <%!%>
+ <%-- <%=path%> 절대경로 표기법--%>
 <%
 	GuestbookDAO gdao = new GuestbookDAO();
+	// 절대경로 확인
+	String path = request.getContextPath();
 
 	List<Guestbook> list = gdao.glist();
 

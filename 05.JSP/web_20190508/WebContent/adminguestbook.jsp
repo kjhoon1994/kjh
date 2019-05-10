@@ -3,15 +3,39 @@
 <%@ page import="com.guestbook.*, java.util.*"%>
 <%!%>
 <%
+   //관리자 전용 페이지
+   //세션 검사 과정
+   Object sess = session.getAttribute("login");
+   //String sess = (String)session.getAttribute("login");
+   if(sess == null) {
+      //강제 페이지 전환
+      response.sendRedirect("guestbook.jsp");
+   } 
+   
+   String result2 = request.getParameter("result2");
+   String message2 = "";
+   
+   if (result2 == null) {
+      result2 = "";
+   } else if (result2.equals("success")) {
+      message2 += "<div class='alert alert-success alert-dismissible'>";
+      message2 += "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+      message2 += "<strong>Success!</strong> 로그인에 성공하였습니다";
+      message2 += "</div>";
+   } 
+ 
+   //절대경로 확인
+   String path = request.getContextPath();
+   
    AdminGuestbookDAO agdao = new AdminGuestbookDAO();
-
+ 
    List<Guestbook> list = agdao.glist();
-
+ 
    StringBuilder sb = new StringBuilder();
    int cnt = 0;
    int tcnt = 0;
    int bcnt = 0;
-
+ 
    //동적으로 <tr>, <td>를 작성하는 위치
    for (Guestbook g : list) {
       sb.append(String.format("<tr>"));
@@ -22,18 +46,20 @@
       sb.append(String.format("<td>%s</td>", g.getIpaddress()));
       if (g.getBlind() == 0) {
          sb.append(String.format(
-               "<td><div class='btn-group'><button type='button' class='btn btn-default disabled on' value="+g.getSsn()+">on</button>"));
+               "<td><div class='btn-group'><button type='button' class='btn btn-default btn-xs active on' value="
+               +g.getSsn()+">on</button>"));
          sb.append(String.format(
-               "<button type='button' class='btn btn-default active off value="+g.getSsn()+"'>off</button></div></td>"));
+               "<button type='button' class='btn btn-default btn-xs off' disabled>off</button></div></td>"));
          ++cnt;
       } else {
          sb.append(String.format(
-               "<td><div class='btn-group'><button type='button' class='btn btn-default active on' value="+g.getSsn()+">on</button>"));
+               "<td><div class='btn-group'><button type='button' class='btn btn-default btn-xs on' disabled>on</button>"));
          sb.append(String.format(
-               "<button type='button' class='btn btn-default disabled off' value="+g.getSsn()+">off</button></div></td>"));
+               "<button type='button' class='btn btn-default btn-xs active off' value="+g.getSsn()+">off</button></div></td>"));
+         
          ++bcnt;
       }
-
+ 
       sb.append(String.format("</tr>"));
       ++tcnt;
    }
@@ -47,21 +73,20 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
+ 
 <style>
 h2 {
    text-align: center;
 }
-
 .search {
    display: inline-block;
 }
 </style>
-
+ 
 <!-- jQuery library -->
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+ 
 <!-- Latest compiled JavaScript -->
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -71,28 +96,26 @@ h2 {
       //blind on/off 버튼에 대한 클릭 이벤트 등록
       //서버 요청시 get방식 자료 전송
       $(".on").on("click", function() {
-         
-         location.assign("adminblind.jsp?ssn="+this.value+"&blind=0");
-      });
-      
-      $(".off").on("click", function() {
          location.assign("adminblind.jsp?ssn="+this.value+"&blind=1");
       });
-
+      $(".off").on("click", function() {
+         location.assign("adminblind.jsp?ssn="+this.value+"&blind=0");
+      });
+ 
       
    });
-
+ 
    function myFunction(value) {
       
    }
 </script>
-
+ 
 </head>
 <body>
    <div class="container">
       <!-- 방명록에 대한 정적 HTML 태그(화명 설계에 따른 구현) 구성 -->
       <h2>
-         <img src="img/1.png" width="100" height="70">방명록<small>v1.0</small>
+         <img src="img/1.PNG" width="100" height="70">방명록<small>v1.0</small>
       </h2>
       <nav class="navbar navbar-default">
          <div class="container-fluid">
@@ -102,11 +125,11 @@ h2 {
             <ul class="nav navbar-nav">
                <li class="active"><a href="#">방명록관리</a></li>
                <li><a href="#">사진관리</a></li>
-               <li><a href="#">로그아웃</a></li>
+               <li><a href="logout.jsp">로그아웃</a></li>
             </ul>
          </div>
       </nav>
-
+      <%=message2 %>
       <div class="panel panel-default">
          <div class="panel-heading">방명록 글목록</div>
          <div class="panel-body">
@@ -130,11 +153,11 @@ h2 {
                   <button type="button" class="btn btn-default">
                      TotalCount<span class="badge"><%=tcnt%></span>
                   </button>
-
+ 
                   <button type="button" class="btn btn-default">
                      Count<span class="badge"><%=cnt%></span>
                   </button>
-
+ 
                   <button type="button" class="btn btn-default">
                      BlindCount<span class="badge"><%=bcnt%></span>
                   </button>

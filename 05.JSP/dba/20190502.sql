@@ -33,4 +33,4 @@ SELECT id, name_, phone, email FROM members;
 DELETE FROM members;
 SET SQL_SAFE_UPDATES = 0; /*0 삭제 가능하게 해준다 1 삭제 불가능하게 해준다 */
 
-DELETE FROM members WHERE id='M004';
+DELETE FROM members WHERE id='';
